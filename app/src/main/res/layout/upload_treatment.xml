@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadTreatmentActivity"
+    android:padding="10dp">
+
+
+    <EditText
+        android:id="@+id/treatment_name"
+        android:layout_width="393dp"
+        android:layout_height="63dp"
+        android:hint="Treatment Name:"
+        android:inputType="text"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/ingredients"
+        android:layout_width="401dp"
+        android:layout_height="110dp"
+        android:layout_below="@id/treatment_name"
+        android:layout_marginTop="11dp"
+        android:hint="Ingredients:"
+        android:inputType="text"
+        android:verticalScrollbarPosition="right" />
+
+    <EditText
+        android:id="@+id/preparation"
+        android:layout_width="395dp"
+        android:layout_height="232dp"
+        android:layout_below="@id/ingredients"
+        android:hint="Preparation:"
+        android:inputType="text"
+        android:verticalScrollbarPosition="right" />
+
+    <Button
+        android:id="@+id/uploadTreatment"
+        android:layout_width="391dp"
+        android:layout_height="59dp"
+        android:layout_below="@+id/preparation"
+        android:layout_marginTop="13dp"
+        android:text="Upload Treatment" />
+
+
+</RelativeLayout>
