@@ -7,28 +7,52 @@
     tools:context=".StartActivity">
 
 
-    <Button
-        android:id="@+id/registerSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="login/sign up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+    <RelativeLayout
+        android:id="@+id/rootRL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/grannyknowsbetter"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/WelcomeText"
-        android:layout_width="151dp"
-        android:layout_height="33dp"
-        android:text="Welcome "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        android:background="#80000000"
+
+        <TextView
+            android:id="@+id/WelcomeText"
+            android:layout_width="230dp"
+            android:layout_height="33dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="177dp"
+            android:layout_marginBottom="715dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Welcome "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/GuestButton"
+            android:layout_width="237dp"
+            android:layout_height="57dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="86dp"
+            android:layout_marginBottom="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/guestbutton" />
+
+        <Button
+            android:id="@+id/registerSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="14dp"
+            android:text="login/sign up" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
 import com.example.grannyknow.User;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,12 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class FirebaseUsers {
-    //public static boolean isAdmin;
 
-    public static void addUserToDB(String User_ID, String firstName, String lastName, String phoneNumber, boolean isPremium, String email) {
+    public static void addUserToDB(String User_ID, String firstName, String lastName,String nickname, String phoneNumber, boolean isPremium, String email) {
 
-        User user = new User(User_ID, firstName, lastName, phoneNumber, isPremium, 0, 0, email);
+        User user = new User(User_ID, firstName, lastName,nickname, phoneNumber, isPremium, 0, 0, email);
         FirebaseBaseModel.getRef().child("Users").child(User_ID).setValue(user);
+
     }
 
     public static void changeUserByID(User user) {
@@ -41,6 +42,11 @@ public class FirebaseUsers {
 
         return FirebaseBaseModel.getRef().child("Users").child(id);
     }
+    public static DatabaseReference getUserByNickname(String nickname) {
+
+        return FirebaseBaseModel.getRef().child("Users").child(nickname);
+    }
+
     public static DatabaseReference getTreatments() {
 
         return FirebaseBaseModel.getRef().child("Treatments");
@@ -51,6 +57,12 @@ public class FirebaseUsers {
         FirebaseBaseModel.getRef().child("Users").child(treatment.getTreatUser_ID()).child("Treatments").child(treatment.getTreatName()).setValue(treatment);
         FirebaseBaseModel.getRef().child("Treatments").child(treatment.getTreatName()).setValue(treatment);
 
+    }
+
+    public static void addTipToDB(String name[], String description[]) {
+        for (int i = 0; i < name.length; i++) {
+            FirebaseBaseModel.getRef().child("Tips").child(name[i]).setValue(description[i]);
+        }
     }
 
 }

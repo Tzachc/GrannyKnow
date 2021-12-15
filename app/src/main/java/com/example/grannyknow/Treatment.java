@@ -5,6 +5,8 @@ import java.util.Vector;
 
 public class Treatment implements Serializable {
     private String User_ID;
+    private String nickname;
+
     private String treatName;
     private String ingredients;
     private String preparation;
@@ -12,8 +14,9 @@ public class Treatment implements Serializable {
     static protected int numOfRates = 0;
     protected static Vector<Integer> treatRate= new Vector<>();
 
-    public Treatment(String userID, String name, String ingredients, String preparation){
+    public Treatment(String userID,String nickname, String name, String ingredients, String preparation){
         this.User_ID = userID;
+        this.nickname = nickname;
         this.treatName = name;
         this.ingredients = ingredients;
         this.preparation = preparation;
@@ -30,6 +33,10 @@ public class Treatment implements Serializable {
     {
         User_ID = user_ID;
     }
+
+    public String getNickname() {return nickname;}
+
+    public void setNickname(String nick) { nickname = nick; }
 
     public String getTreatName()
     {

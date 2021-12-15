@@ -2,11 +2,15 @@ package com.example.grannyknow;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +23,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private Button logout;
-    private Button upload;
-    private Button allTreatments;
+    private ImageButton upload;
+    private ImageButton allTreatments;
+    private ImageButton tips;
+    private ImageButton prof;
+    private ImageButton exM;
     private EditText first_name;
     private TextView welcomeText;
     private FirebaseAuth auth;
@@ -29,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         logout = findViewById(R.id.logout);
         upload = findViewById(R.id.uploadButton);
         allTreatments = findViewById(R.id.allTreatmentsButton);
-
+        prof = findViewById(R.id.profile);
         welcomeText = findViewById(R.id.WelcomeText);
         first_name = findViewById(R.id.user_firstName);
-
+        tips = findViewById(R.id.tipsButton);
+        exM = findViewById(R.id.exmarkButton);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +67,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "all treatments!",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, AllTreatmentsActivity.class));
+            }
+        });
+        prof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+            }
+        });
+        tips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TipsActivity.class));
+            }
+        });
+        exM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AttentionActivity.class));
             }
         });
 

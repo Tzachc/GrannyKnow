@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".AllTreatmentsActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
 
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+	<LinearLayout
+		android:id="@+id/LinearLayout1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".MainActivity"
+		tools:layout_editor_absoluteX="40dp"
+		tools:layout_editor_absoluteY="118dp">
 
-        </ListView>
-    </LinearLayout>
+		<ExpandableListView
+			android:id="@+id/list"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		</ExpandableListView>
+
+
+	</LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

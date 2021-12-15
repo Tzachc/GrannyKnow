@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GrannyKnow">
         <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AttentionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GuestActivity"
+            android:exported="false" />
+        <activity
             android:name=".AllTreatmentsActivity"
             android:exported="false" />
         <activity

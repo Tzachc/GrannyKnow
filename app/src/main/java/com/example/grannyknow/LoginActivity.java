@@ -20,27 +20,48 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText email;
     private EditText password;
     private Button login;
     private FirebaseAuth auth;
     private Button registerB;
-   // private Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setStatusBarTransparent(LoginActivity.this);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        login = findViewById(R.id.login);
-        registerB = findViewById(R.id.registerB);
+        login = findViewById(R.id.button_signin);
+        registerB = findViewById(R.id.button_signup);
+        email = findViewById(R.id.et_Email);
+        password = findViewById(R.id.et_password);
         auth = FirebaseAuth.getInstance();
         registerB.setOnClickListener(this);
         login.setOnClickListener(this);
 
+    }
+
+    private void setStatusBarTransparent(AppCompatActivity activity) {
+        //Make Status bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        //Make status bar icons color dark
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            activity.getWindow().setStatusBarColor(Color.WHITE);
+        }
     }
 
   @Override
@@ -55,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
       }
       else if (login.equals(ClickedButton)){
 
-           String txt_email = email.getText().toString();
+          String txt_email = email.getText().toString();
           String txt_password = password.getText().toString();
           if (!validation(txt_email, txt_password)){
               return;
@@ -109,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (email.isEmpty())
         {
 
-            this.email.setError("Please enter an email");
+            this.email.setError("Please enter an Email");
             //Toast.makeText(LoginActivity.this, "Please enter an email!",Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -120,12 +141,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         if (!ValidateUserEmail(email))
         {
-            this.email.setError("Incorrent email!");
+            this.email.setError("Incorrect Email!");
             return false;
         }
         if (password.length() < 6)
         {
-            this.password.setError("Unvalid password!");
+            this.password.setError("Wrong password!");
             return false;
         }
         return true;
@@ -152,8 +173,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else
         {
-            email.setError("email or password is incorrect");
-            password.setError("email or password is incorrect");
+            email.setError("Email or password is incorrect");
+            password.setError("Email or password is incorrect");
             password.setText("");
             email.setText("");
         }
